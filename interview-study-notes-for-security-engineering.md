@@ -149,6 +149,17 @@ Where did these notes come from? See the [README](README.md).
 	- Know the hierarchy of rules in a list
 - NAT 
 	- Useful to understand IPv4 vs IPv6.
+	- NAT (Network Address Translation):
+	- Technique for converting private IP addresses to public IP addresses
+	- Allows multiple devices to share a single public IP address, Increases security and saves IPv4 address space
+- IPv4
+	- Uses 32-bit addressing, offering ~4.3 billion unique addresses
+	- Not enough for the growing number of internet devices
+	- Most common, but gradually being replaced by IPv6
+- IPv6
+	- Uses 128-bit addressing, offering a massive number of unique addresses
+	- Improved security and efficiency compared to IPv4, potential provacy issues. Much more difficult to enumerate IPv6 Addresses
+	- Slowly being adopted globally
 - DNS
 	- (53)
 	- Requests to DNS are usually UDP, unless the server gives a redirect notice asking for a TCP connection. Look up in cache happens first. DNS exfiltration. Using raw IP addresses means no DNS logs, but there are HTTP logs. DNS sinkholes.
@@ -171,19 +182,31 @@ Where did these notes come from? See the [README](README.md).
 	- Dynamic address allocation (allocated by router).
 	- `DHCPDISCOVER` -> `DHCPOFFER` -> `DHCPREQUEST` -> `DHCPACK`
 - Multiplex 
-	- Timeshare, statistical share, just useful to know it exists.
+	- Timeshare, statistical share, just useful to know it exists, and what it accomplishes.
 - Traceroute 
 	- Usually uses UDP, but might also use ICMP Echo Request or TCP SYN. TTL, or hop-limit.
 	- Initial hop-limit is 128 for windows and 64 for *nix. Destination returns ICMP Echo Reply. 
 - Nmap 
-	- Network scanning tool.
+	- Network scanning tool, know what it can do, and some of the malicious and non-malicious uses.
 - Intercepts (PitM - Person in the middle)
-	- Understand PKI (public key infrastructure in relation to this).
+	- Understand PKI (public key infrastructure in relation to this)
+- PK (Public Key Infrastructure)
+	- System for managing digital certificates and encryption keys
+	- Ensures secure communication and authentication over the internet
+	- Relies on a trusted Certificate Authority (CA) to issue and validate certificates
+	- User A wants to send an encrypted message to User B
+	- User A obtains User B's public key from their digital certificate
+	- User A encrypts the message with User B's public key
+	- User B receives the encrypted message and decrypts it with their private key
 - VPN 
-	- Hide traffic from ISP but expose traffic to VPN provider.
+	- Hide traffic from ISP but exposes traffic to VPN provider.
 - Tor 
-	- Traffic is obvious on a network. 
-	- How do organised crime investigators find people on tor networks. 
+	- Traffic is obvious on a network. For example:
+	- Distinctive packet sizes and timing patterns: Tor's use of fixed-size cells (512 bytes) and specific timing intervals for relaying traffic can be used to identify its presence on a network.
+	- Entry and exit nodes: Security analysts can monitor known entry and exit nodes of the Tor network. If traffic is observed connecting to or from these nodes, it is likely to be Tor traffic.
+	- TLS fingerprinting: Tor uses specific TLS (Transport Layer Security) cipher suites and parameters that can be identified through deep packet inspection, which allows analysts to detect Tor traffic.
+	- Protocol fingerprinting: Tor uses its own protocol (the Tor protocol) for communication, which can be detected through protocol analysis and traffic monitoring.
+	- How do organised crime investigators find people on tor networks [Founder of Silk Road](https://www.wired.com/2015/04/silk-road-1/)
 - Proxy  
 	- Why 7 proxies won’t help you. 
 - BGP
