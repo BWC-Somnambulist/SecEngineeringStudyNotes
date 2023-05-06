@@ -1,6 +1,7 @@
 # Almost all credit goes to Grace Nolan, Security Engineer at Google
-## By [nolang](https://twitter.com/__nolang)
+## [nolang](https://twitter.com/__nolang)
 ## [nolang](https://github.com/gracenolan)
+## [Somnambulist](https://github.com/BWC-Somnambulist)
 
 ### Contents
 - [README](README.md)
@@ -206,16 +207,17 @@ Where did these notes come from? See the [README](README.md).
 	- Entry and exit nodes: Security analysts can monitor known entry and exit nodes of the Tor network. If traffic is observed connecting to or from these nodes, it is likely to be Tor traffic.
 	- TLS fingerprinting: Tor uses specific TLS (Transport Layer Security) cipher suites and parameters that can be identified through deep packet inspection, which allows analysts to detect Tor traffic.
 	- Protocol fingerprinting: Tor uses its own protocol (the Tor protocol) for communication, which can be detected through protocol analysis and traffic monitoring.
-	- How do organised crime investigators find people on tor networks [Founder of Silk Road](https://www.wired.com/2015/04/silk-road-1/)
+	- How do organised crime investigators find people on tor networks [Example: Founder of Silk Road](https://www.wired.com/2015/04/silk-road-1/)
 - Proxy  
-	- Why 7 proxies won’t help you. 
+	- Why 7 proxies won’t help you. (correlation attacks/log retention/proxy trustworthiness)
 - BGP
 	- Border Gateway Protocol.
 	- Holds the internet together.
+	- A standardised exterior gateway protocol that manages how packets are routed across the internet by exchanging routing and reachability information between autonomous systems. BGP allows routers to determine the most efficient path to transmit data across the internet and dynamically adjust to network changes or failures. BGP is the protocol responsible for maintaining the global routing table and ensuring efficient and reliable data transmission across the internet.
 - Network traffic tools
 	- Wireshark
 	- Tcpdump
-	- Burp suite
+	- BurpSuite
 - HTTP/S 
 	- (80, 443)
 	- Common HTTP Response Codes:
@@ -226,8 +228,22 @@ Where did these notes come from? See the [README](README.md).
 	-  5xx It didn't work and it's my fault
 - SSL/TLS
 	- (443) 
-	- Super important to learn this, includes learning about handshakes, encryption, signing, certificate authorities, trust systems. A good [primer](https://english.ncsc.nl/publications/publications/2021/january/19/it-security-guidelines-for-transport-layer-security-2.1) on all these concepts and algorithms is made available by the Dutch cybersecurity center.
-	- POODLE, BEAST, CRIME, BREACH, HEARTBLEED.
+	- Super important to learn this, includes learning about handshakes, encryption, signing, certificate authorities, trust systems. A good [primer](https://english.ncsc.nl/publications/publications/2021/january/19/it-security-guidelines-for-transport-layer-security-2.1) on all these concepts and algorithms is made available by the Dutch cybersecurity center. Understand how the following attacks/vulnerabilities can be mitigated.
+	- POODLE  (Padding Oracle On Downgraded Legacy Encryption):
+	- Affects SSLv3 and relies on a padding oracle attack
+	- Exploits the way SSLv3 handles padding in CBC (Cipher Block Chaining) mode
+	- BEAST (Browser Exploit Against SSL/TLS):
+	- Affects TLS 1.0 and SSLv3, targeting the use of CBC mode
+	- Exploits a vulnerability in the way the initialization vector (IV) is selected in these protocols
+	- CRIME  (Compression Ratio Info-leak Made Easy):
+	- Exploits the use of data compression in SSL/TLS and SPDY protocols
+	- Relies on observing changes in the size of compressed data to infer information about the plaintext
+	- BREACH  (Browser Reconnaissance and Exfiltration via Adaptive Compression of Hypertext):
+	- Similar to CRIME, but targets HTTP response compression (e.g., gzip)
+	- Exploits the way compression algorithms reveal information about the plaintext
+	- HEARTBLEED (no fancy mnenomic):
+	- Affects OpenSSL, a widely used implementation of SSL/TLS
+	- Caused by a buffer over-read in the TLS heartbeat extension, which leaks sensitive memory contents
 - TCP/UDP
 	- Web traffic, chat, voip, traceroute.
 	- TCP will throttle back if packets are lost but UDP doesn't. 
@@ -252,11 +268,18 @@ Where did these notes come from? See the [README](README.md).
 	- Dynamic (leases IP address, not persistent).
 	- Automatic (leases IP address and remembers MAC and IP pairing in a table).
 	- Manual (static IP set by administrator).
-- IRC 
+- IRC (Internet Relay Chat)
+	- Developed as a near real time text based communicatio  protocol that enables users to chat in channels or groups, as well as in private conversations. 
 	- Understand use by hackers (botnets).
+	- Primarily used as C2 (Command and Control), a channel is used to send commands to numerous clients.
+	- Ease of anonymity
+	- IRC supports various scripting languages, allowing for automation.
+	- Can be decentralised and resilient to takedowns or disruptions.
+	- Should be noted that in recent years actors have moved to more advanced and stealthy communication methods such as P2P networks, custom protocols, and encrypyted messaging platforms.
 - FTP/SFTP 
 	- (21, 22)
-- RPC 
+- RPC (Remote Procedure Call)
+	- Used to communicate between processes on different workstations.
 	- Predefined set of tasks that remote clients can execute.
 	- Used inside orgs. 
 - Service ports
@@ -291,9 +314,12 @@ Where did these notes come from? See the [README](README.md).
 	- Destination port
 	- Length
 	- Checksum
-- Broadcast domains and collision domains. 
+- Broadcast domains and collision domains.
+	- This is fairly basic networking knowledge that it is expected for you to know.
+	- Its worth knowing about LLMNR (Link-Local Multicast Name Resolution), allows name resolution without the requirement of a DNS Server. This allows impersonation on a network.
 - Root stores
 - CAM table overflow
+	- Occurs when an attacker connects to a single or multiple switch ports and then runs a tool that mimics the existence of thousands of random MAC addresses on those switch ports. The switch enters these into the CAM table, and eventually the CAM table fills to capacity.
 
 
 # Web Application 
