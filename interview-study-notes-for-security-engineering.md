@@ -1,7 +1,7 @@
 # Almost all credit goes to Grace Nolan, Security Engineer at Google
-## [nolang](https://twitter.com/__nolang)
-## [nolang](https://github.com/gracenolan)
-## [Somnambulist](https://github.com/BWC-Somnambulist)
+### [nolang Twitter](https://twitter.com/__nolang)
+### [nolang Github](https://github.com/gracenolan)
+### [Somnambulist Github](https://github.com/BWC-Somnambulist)
 
 ### Contents
 - [README](README.md)
