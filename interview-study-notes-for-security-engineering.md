@@ -25,7 +25,7 @@
 
 # Background
 
-Where did these notes come from? See the [README](README.md).
+Where did these notes come from? See the [README]([README.md](https://github.com/BWC-Somnambulist/SecEngineeringStudyNotes/blob/main/README.md)).
 
 # Learning Tips 
 
@@ -324,11 +324,12 @@ Where did these notes come from? See the [README](README.md).
 
 # Web Application 
 
-- Same origin policy
+- Same Origin Policy
 	- Only accept requests from the same origin domain.  
 - CORS 
-	- Cross-Origin Resource Sharing. Can specify allowed origins in HTTP headers. Sends a preflight request with options set asking if the server approves, and if the server approves, then the actual request is sent (eg. should client send auth cookies).
-- HSTS 
+	- Cross-Origin Resource Sharing. Can specify allowed origins in HTTP headers. Sends a pre-flight request with options set asking if the server approves, and if the server approves, then the actual request is sent (eg. should client send auth cookies).
+- HSTS
+	- HTTP Strict Transport Security is a policy mechanism that helps to protect websites against man-in-the-middle attacks such as protocol downgrade attacks and cookie hijacking
 	- Policies, eg what websites use HTTPS.
 - Cert transparency 
 	- Can verify certificates against public logs 	
@@ -338,9 +339,10 @@ Where did these notes come from? See the [README](README.md).
 - Cookies 
 	- httponly - cannot be accessed by javascript.
 - CSRF
-	- Cross-Site Request Forgery.
+	- Cross-Site Request Forgery - malicious exploit of a website or web application where unauthorized commands are submitted from a user that the web application trusts.
 	- Cookies.
 - XSS
+	- XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
 	- Reflected XSS.
 	- Persistent XSS.
 	- DOM based /client-side XSS.
@@ -357,6 +359,7 @@ Where did these notes come from? See the [README](README.md).
 	- Find directories on the server you’re not meant to be able to see.
 	- There are tools that do this.
 - APIs 
+	- Application Programming Interface.
 	- Think about what information they return. 
 	- And what can be sent.
 - Beefhook
@@ -366,7 +369,8 @@ Where did these notes come from? See the [README](README.md).
 - Browser extension take-overs
 	- Miners, cred stealers, adware.
 - Local file inclusion
-- Remote file inclusion (not as common these days)
+	- LFI occurs when an application uses the path to a file as input. If the application treats this input as trusted, a local file may be used in the include statement.
+- Remote file inclusion (not as common these days).
 - SSRF 
 	- Server Side Request Forgery.
 - Web vuln scanners. 
@@ -376,20 +380,31 @@ Where did these notes come from? See the [README](README.md).
 
 # Infrastructure (Prod / Cloud) Virtualisation 
 
-- Hypervisors.
-- Hyperjacking.
+- Hypervisors
+	-  type of computer software, firmware or hardware that creates and runs virtual machines.
+- Hyperjacking
+	- malicious take over of a hypervisor.
 - Containers, VMs, clusters.
+	- Containers are a form of operating system virtualisation, a single container might be used to run anything from a microservice, software process, to a larger application.
+	- VMs are software emulations of physical computers. Full copy of OS, applications, binaries, libraries, etc.
+	- Clusters are groups of VM's working together to perform tasks such as complex simulations or serving web pages.
 - Escaping techniques.
 	- Network connections from VMs / containers.  
 - Lateral movement and privilege escalation techniques.
 	- Cloud Service Accounts can be used for lateral movement and privilege escalation in Cloud environments.
 	- GCPloit tool for Google Cloud Projects.
-- Site isolation.
+- Site isolation
+	- A site in this context can refer to physical location (like data center) or a logical concept (like a cloud platforms region or availability zone)
+	- Main reasons for site isolation are Security (containing breach impact to one site), Performance (localising performance issues to regions), Fault Isolation (maintaining reliability and high availability after a fault on one site.
 - Side-channel attacks.
-	- Spectre, Meltdown.
+	- Spectre: breaks the isolation between different applications. It allows an attacker to trick error-free programs, which follow best practices, into leaking their secrets. Spectre is more complex to exploit than Meltdown but also harder to mitigate. It affects almost every system, including desktops, laptops, cloud servers, and smartphones.
+	- Meltdown: breaks the fundamental isolation between the user applications and the operating system. This attack allows a program to access the memory, and thus also the secrets, of other programs and the operating system. The vulnerability essentially melts security boundaries which are enforced by the hardware. Meltdown affects many systems, including desktops, laptops, and cloud computers.
+	- Both attacks take advantage of the CPU's speculative execution mechanism, a feature designed to increase performance by executing instructions ahead of time. If certain conditions are met, the CPU will guess which instructions might be executed next and start executing them. If guessed wrong, it will roll back the changes as if nothing happened. However, this process can leave traces in the CPU's cache. An attacker can determine whether a particular piece of data is in the cache by measuring how long it takes to access memory. This is known as a side-channel attack.
 - Beyondcorp 
-	- Trusting the host but not the network.
-- Log4j vuln. 
+	- BeyondCorp is a security model pioneered by Google that shifts access controls from the network perimeter to individual users and their devices. Instead of traditional methods where resources are located inside a secure corporate network and assumed safe, BeyondCorp does away with the idea of a trusted "internal network" and an "external network" that is less trusted.
+	- The central idea behind BeyondCorp is to treat every access request as if it's coming from an open network, regardless of where the request originates or what network it's on. This means that every request for data is fully authenticated and authorised based on the user and the context of the request.
+- Log4j vuln
+	- Security issue in the Java logging package Log4j. Allows RCE on the server, this vulnerability was found in everything from banking systems to smart toasters. Wide spread due to the vulnerability lying in a trusted package.
 
 
 # OS Implementation and Systems
